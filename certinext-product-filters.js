@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         CertiNext – Product Filters
 // @namespace    https://us.certinext.io/
-// @version      1.3.0
+// @version      1.3.1
 // @description  Adds dynamic DV, OV, IGTF, and Wildcard filters to the CertiNext product selector.
 // @match        https://us.certinext.io/acmeApi*
+// @match        https://sandbox-us.certinext.io/acmeApi*
 // @downloadURL   https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-product-filters.user.js
 // @updateURL     https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-product-filters.user.js
 // @run-at       document-idle

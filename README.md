@@ -6,10 +6,10 @@ Tampermonkey userscripts that improve product and group selection on the CertiNe
 
 | Script | Page | What it does |
 | --- | --- | --- |
-| [`certinext-group-sort.js`](./certinext-group-sort.js) | `https://us.certinext.io/acmeApi*` | Sorts the group selector alphabetically and hides groups whose name starts with `[Deleted]`. The placeholder remains at the top. |
-| [`certinext-product-filters.js`](./certinext-product-filters.js) | `https://us.certinext.io/acmeApi*` | Adds persistent tri-state `DV`, `OV`, `IGTF`, and `Wildcard` filters to the product selector. |
-| [`certinext-ov-filter.js`](./certinext-ov-filter.js) | `https://us.certinext.io/addGroups*` | Adds the same persistent tri-state filters to the Groups page's Select2 Products selector. |
-| [`certinext-sidebar-menu.js`](./certinext-sidebar-menu.js) | `https://us.certinext.io/*` | Adds Organizations, Domains, and Public Link to the Certificates sidebar and activates the matching Orders tab. |
+| [`certinext-group-sort.js`](./certinext-group-sort.js) | `us.certinext.io/acmeApi*` and `sandbox-us.certinext.io/acmeApi*` | Sorts the group selector alphabetically and hides groups whose name starts with `[Deleted]`. The placeholder remains at the top. |
+| [`certinext-product-filters.js`](./certinext-product-filters.js) | `us.certinext.io/acmeApi*` and `sandbox-us.certinext.io/acmeApi*` | Adds persistent tri-state `DV`, `OV`, `IGTF`, and `Wildcard` filters to the product selector. |
+| [`certinext-ov-filter.js`](./certinext-ov-filter.js) | `us.certinext.io/addGroups*` and `sandbox-us.certinext.io/addGroups*` | Adds the same persistent tri-state filters to the Groups page's Select2 Products selector. |
+| [`certinext-sidebar-menu.js`](./certinext-sidebar-menu.js) | `us.certinext.io/*` and `sandbox-us.certinext.io/*` | Adds Organizations, Domains, and Public Link to the Certificates sidebar and activates the matching Orders tab. |
 
 The scripts are independent. Install only the ones you need.
 

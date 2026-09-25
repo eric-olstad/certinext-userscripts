@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         CertiNext – Product Filters (Groups)
 // @namespace    https://us.certinext.io/
-// @version      1.2.0
+// @version      1.2.1
 // @description  Adds persistent tri-mode product filters to the CertiNext Groups product selector.
 // @match        https://us.certinext.io/addGroups*
+// @match        https://sandbox-us.certinext.io/addGroups*
 // @downloadURL   https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-ov-filter.user.js
 // @updateURL     https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-ov-filter.user.js
 // @run-at       document-idle

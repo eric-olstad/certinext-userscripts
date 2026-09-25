@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         CertiNext – Expand Certificates Sidebar
 // @namespace    https://us.certinext.io/
-// @version      1.1.0
+// @version      1.2.0
 // @description  Adds the Organizations, Domains, and Public Link order tabs to the Certificates sidebar.
 // @match        https://us.certinext.io/*
+// @match        https://sandbox-us.certinext.io/*
 // @downloadURL  https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-sidebar-menu.js
 // @updateURL    https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-sidebar-menu.js
 // @run-at       document-idle
