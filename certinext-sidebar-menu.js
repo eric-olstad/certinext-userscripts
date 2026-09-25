@@ -15,9 +15,9 @@
 
     const ORDER_TABS = [
         { label: 'Orders', tabId: 'ordersTab', hash: 'orders', tabNumber: '1' },
-        { label: 'Organizations', tabId: 'organizationTab', hash: 'organization', tabNumber: '2' },
-        { label: 'Domains', tabId: 'domainsTab', hash: 'domains', tabNumber: '3' },
-        { label: 'Public Link', tabId: 'publicLinkTab', hash: 'public-link', tabNumber: '4' }
+        { label: 'Organizations', tabId: 'organizationTab', hash: 'organizationDiv' },
+        { label: 'Domains', tabId: 'domainsTab', hash: 'domains' },
+        { label: 'Public Link', tabId: 'publicLinkTab', hash: 'publicLink' }
     ];
     const MENU_ITEM_CLASS = 'certinext-order-tab-menu-item';
 
@@ -47,6 +47,13 @@
         link.href = '/manageOrders#' + tab.hash;
         link.textContent = tab.label;
         link.dataset.certinextOrderTab = tab.tabId;
+        link.addEventListener('click', (event) => {
+            if (window.location.pathname !== '/manageOrders') return;
+
+            event.preventDefault();
+            window.history.replaceState({}, '', link.href);
+            activateOrderTabFromHash();
+        });
 
         item.appendChild(link);
         return item;
@@ -82,6 +89,8 @@
         });
     }
 
+    let activatedHash = null;
+
     function activateOrderTabFromHash() {
         if (window.location.pathname !== '/manageOrders') return;
 
@@ -91,12 +100,14 @@
 
         const tabLink = document.getElementById(tab.tabId);
         if (!tabLink) return;
-        if (tabLink.dataset.certinextHashActivated === hash) return;
+        if (activatedHash === hash) return;
 
-        tabLink.dataset.certinextHashActivated = hash;
-        if (typeof window.getCurrentTab === 'function') {
-            window.getCurrentTab(tab.tabNumber);
+        if (typeof window.getCurrentTab !== 'function') {
+            window.setTimeout(activateOrderTabFromHash, 50);
+            return;
         }
+
+        activatedHash = hash;
         tabLink.click();
     }
 
@@ -107,5 +118,7 @@
 
     const observer = new MutationObserver(enhance);
     observer.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener('hashchange', activateOrderTabFromHash);
+    window.addEventListener('load', enhance);
     enhance();
 })();

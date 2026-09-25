@@ -32,7 +32,7 @@ The userscripts run only on the URLs listed in the table above. If a script does
 - Domains
 - Public Link
 
-The added links open `/manageOrders` and activate the selected tab. They work from any matching CertiNext page, not only from the Orders page.
+The added links open `/manageOrders` with the actual tab pane ID in the URL. On the Orders page, the userscript invokes CertiNext's own Bootstrap tab and `getCurrentTab` behavior so the page loads the selected tab correctly. They work from any matching CertiNext page, not only from the Orders page.
 
 ## Product filter controls
 
