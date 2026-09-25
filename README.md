@@ -7,8 +7,8 @@ Tampermonkey userscripts that improve product and group selection on the CertiNe
 | Script | Page | What it does |
 | --- | --- | --- |
 | [`certinext-group-sort.js`](./certinext-group-sort.js) | `https://us.certinext.io/acmeApi*` | Sorts the group selector alphabetically and hides groups whose name starts with `[Deleted]`. The placeholder remains at the top. |
-| [`certinext-product-filters.js`](./certinext-product-filters.js) | `https://us.certinext.io/acmeApi*` | Adds dynamic `DV`, `OV`, `IGTF`, and `Wildcard` filters to the product selector. |
-| [`certinext-ov-filter.js`](./certinext-ov-filter.js) | `https://us.certinext.io/addGroups*` | Shows only products containing `OV` as a standalone term in the Select2 product results and sorts them alphabetically. |
+| [`certinext-product-filters.js`](./certinext-product-filters.js) | `https://us.certinext.io/acmeApi*` | Adds persistent tri-state `DV`, `OV`, `IGTF`, and `Wildcard` filters to the product selector. |
+| [`certinext-ov-filter.js`](./certinext-ov-filter.js) | `https://us.certinext.io/addGroups*` | Adds the same persistent tri-state filters to the Groups page's Select2 Products selector. |
 
 The scripts are independent. Install only the ones you need.
 
@@ -24,20 +24,22 @@ The userscripts run only on the URLs listed in the table above. If a script does
 
 ## Product filter controls
 
-`certinext-product-filters.js` provides a three-state control for each filter:
+Both product-filter scripts provide a three-state control for `DV`, `OV`, `IGTF`, and `Wildcard`:
 
 - **Unchecked**: the filter has no effect.
 - **Included**: show products containing the filter term.
 - **Excluded**: hide products containing the filter term.
 
-Click a filter repeatedly to cycle through those states. Multiple included filters are combined with **OR**; excluded filters always remove matching products. By default, `DV` and `IGTF` are excluded, while `OV` and `Wildcard` are unchecked.
+Click a filter repeatedly to cycle through those states. The controls apply dynamically as product results are loaded or updated. Multiple included filters are combined with **OR**; excluded filters always remove matching products. By default, `DV` and `IGTF` are excluded, while `OV` and `Wildcard` are unchecked.
 
-Filter states are saved by Tampermonkey and restored on later visits. To reset them, clear the userscript's stored data in Tampermonkey, or cycle each filter back to the desired state.
+On the `addGroups` page, the controls appear above the Select2 **Products** selector and filter its result list as it is opened and populated. The `acmeApi` script applies the controls directly to its product `<select>` options.
+
+Filter states are saved by Tampermonkey and restored on later visits. Both scripts use the same saved filter state, so the settings are available on either page. To reset them, clear the userscript's stored data in Tampermonkey, or cycle each filter back to the desired state.
 
 ## Permissions
 
-- `certinext-group-sort.js` and `certinext-ov-filter.js` require no Tampermonkey permissions.
-- `certinext-product-filters.js` uses `GM_getValue` and `GM_setValue` only to persist filter states.
+- `certinext-group-sort.js` requires no Tampermonkey permissions.
+- `certinext-product-filters.js` and `certinext-ov-filter.js` use `GM_getValue` and `GM_setValue` only to persist filter states.
 
 ## Development
 
