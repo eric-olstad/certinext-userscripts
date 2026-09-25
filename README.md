@@ -10,6 +10,7 @@ Tampermonkey userscripts that improve product and group selection on the CertiNe
 | [`certinext-product-filters.js`](./certinext-product-filters.js) | `us.certinext.io/acmeApi*` and `sandbox-us.certinext.io/acmeApi*` | Adds persistent tri-state `DV`, `OV`, `IGTF`, and `Wildcard` filters to the product selector. |
 | [`certinext-ov-filter.js`](./certinext-ov-filter.js) | `us.certinext.io/addGroups*` and `sandbox-us.certinext.io/addGroups*` | Adds the same persistent tri-state filters to the Groups page's Select2 Products selector. |
 | [`certinext-sidebar-menu.js`](./certinext-sidebar-menu.js) | `us.certinext.io/*` and `sandbox-us.certinext.io/*` | Adds Organizations, Domains, and Public Link to the Certificates sidebar and activates the matching Orders tab. |
+| [`certinext-orders-last-filter.js`](./certinext-orders-last-filter.js) | `us.certinext.io/manageOrders*` and `sandbox-us.certinext.io/manageOrders*` | Remembers the Orders filter and restores it after viewing an order. |
 
 The scripts are independent. Install only the ones you need.
 
@@ -33,6 +34,18 @@ The userscripts run only on the URLs listed in the table above. If a script does
 - Public Link
 
 The added links open `/manageOrders` with the actual tab pane ID in the URL. On the Orders page, the userscript invokes CertiNext's own Bootstrap tab and `getCurrentTab` behavior so the page loads the selected tab correctly. They work from any matching CertiNext page, not only from the Orders page.
+
+## Orders Last Filter
+
+`certinext-orders-last-filter.js` preserves the temporary filter on the Orders tab when you open an order with its **View** button or switch away from and back to Orders. It saves every filter row's columns, operators, values, and multi-select selections, then restores the native filter controls and applies the filter when you return to `/manageOrders#orders`, switch back to the Orders tab, or reload the page.
+
+Using **Remove All** also clears the persisted Last Filter.
+
+When a valid Last Filter exists, the script runs early and intercepts CertiNext's unfiltered initialization requests, including the `onload` and `getCurrentTab('1')` paths. It then lets the restored filter request populate the list first, avoiding the normal unfiltered load.
+
+After returning to Orders from another tab, it also restores the native-style search-history summary bar when CertiNext does not recreate it automatically.
+
+The saved state is kept separately for the production and sandbox hosts, using browser session storage plus persistent storage fallbacks. It is independent of CertiNext's named Saved Filters.
 
 ## Product filter controls
 
