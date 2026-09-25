@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         CertiNext – Sort and Filter Groups
 // @namespace    https://us.certinext.io/
-// @version      1.0.0
-// @downloadURL  https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-group-sort.js
-// @updateURL    https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-group-sort.js
+// @version      1.1.0
 // @description  Sorts the CertiNext group selector alphabetically and hides deleted groups.
 // @match        https://us.certinext.io/acmeApi*
+// @downloadURL   https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-group-sort.user.js
+// @updateURL     https://raw.githubusercontent.com/eric-olstad/certinext-userscripts/main/certinext-group-sort.user.js
 // @run-at       document-idle
 // @grant        none
 // ==/UserScript==
