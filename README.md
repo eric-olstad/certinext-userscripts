@@ -9,6 +9,7 @@ Tampermonkey userscripts that improve product and group selection on the CertiNe
 | [`certinext-group-sort.js`](./certinext-group-sort.js) | `https://us.certinext.io/acmeApi*` | Sorts the group selector alphabetically and hides groups whose name starts with `[Deleted]`. The placeholder remains at the top. |
 | [`certinext-product-filters.js`](./certinext-product-filters.js) | `https://us.certinext.io/acmeApi*` | Adds persistent tri-state `DV`, `OV`, `IGTF`, and `Wildcard` filters to the product selector. |
 | [`certinext-ov-filter.js`](./certinext-ov-filter.js) | `https://us.certinext.io/addGroups*` | Adds the same persistent tri-state filters to the Groups page's Select2 Products selector. |
+| [`certinext-sidebar-menu.js`](./certinext-sidebar-menu.js) | `https://us.certinext.io/*` | Adds Organizations, Domains, and Public Link to the Certificates sidebar and activates the matching Orders tab. |
 
 The scripts are independent. Install only the ones you need.
 
@@ -21,6 +22,17 @@ The scripts are independent. Install only the ones you need.
 5. Visit or reload the matching CertiNext page.
 
 The userscripts run only on the URLs listed in the table above. If a script does not appear to work, check that it is enabled in Tampermonkey and that the current page matches its URL pattern.
+
+## Certificates sidebar
+
+`certinext-sidebar-menu.js` expands the Certificates section of the site-wide sidebar with all tabs from the Orders page:
+
+- Orders
+- Organizations
+- Domains
+- Public Link
+
+The added links open `/manageOrders` and activate the selected tab. They work from any matching CertiNext page, not only from the Orders page.
 
 ## Product filter controls
 
